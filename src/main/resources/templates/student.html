@@ -1,0 +1,100 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--    <title>Users</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="card">-->
+<!--        <div class="card-header">-->
+<!--            <h3 class="card-title"></h3>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <div class="row">-->
+<!--                <form th:action = "@{/logout}">-->
+<!--                    <input type="submit" class="btn btn-primary" value="Sign out" />-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="column">-->
+<!--                    <img src="../../assets/images/img1.png" />-->
+<!--                </div>-->
+
+<!--                <div class="column">-->
+<!--                    <ul class="list-group list-group-flush">-->
+<!--                        <li class="list-group-item"><b>Title :</b> th:text="${user.}"</li>-->
+<!--                        <li class="list-group-item"><b>First Name :</b> {{user.firstname}}</li>-->
+<!--                        <li class="list-group-item"><b>Last Name :</b> {{user.lastname}}</li>-->
+<!--                        <li class="list-group-item"><b>Email :</b> {{user.email}}</li>-->
+<!--                        <li class="list-group-item"><b>Birth Date :</b> {{user.birthDate}}</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+
+<!--                <div class="column">-->
+<!--                    <ul class="list-group list-group-flush">-->
+<!--                        <li class="list-group-item"><b>Address :</b> {{user.address}}</li>-->
+<!--                        <li class="list-group-item"><b>City :</b> {{user.city}}</li>-->
+<!--                        <li class="list-group-item"><b>State :</b> {{user.state}}</li>-->
+<!--                        <li class="list-group-item"><b>Phone Number :</b> {{user.phone}}</li>-->
+<!--                        <li class="list-group-item"><b>Notes :</b> {{user.notes}}</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <button (click)="list()" class="btn btn-primary">Back to List</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="card">
+    <div class="card-header">
+        <h3><p th:text="${student.firstName}"></p> <p th:text="${student.lastName}"></p></h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <form th:action="@{/logout}" method="post">
+                <a th:href="@{/edit/{id}(id=${student.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/users/{id}(id=${student.id})}" class="btn btn-primary">Delete</a>
+            </form>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="images/img2.png" />
+            </div>
+
+            <div class="column">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>First Name :</b> <p th:text="${student.firstName}" ></p></li>
+                    <li class="list-group-item"><b>Last Name :</b> <p th:text="${student.lastName}" ></p></li>
+                    <li class="list-group-item"><b>Email :</b> <p th:text="${student.dob}" ></li>
+                    <li class="list-group-item"><b>Birth Date :</b> <p th:text="${student.email}" ></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>First Name :</b> <p th:text="${student.firstName}" ></p></li>
+                    <li class="list-group-item"><b>Last Name :</b> <p th:text="${student.lastName}" ></p></li>
+                    <li class="list-group-item"><b>Email :</b> <p th:text="${student.dob}" ></li>
+                    <li class="list-group-item"><b>Birth Date :</b> <p th:text="${student.email}" ></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" class="btn btn-primary" value="Sign Out"/>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
