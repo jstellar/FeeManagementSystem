@@ -2,6 +2,7 @@ package com.fee.feeSecurity.services;
 
 import com.fee.feeSecurity.dao.AdminDAO;
 import com.fee.feeSecurity.dao.RoleDAO;
+import com.fee.feeSecurity.dao.UserDAO;
 import com.fee.feeSecurity.dto.AdminDto;
 import com.fee.feeSecurity.dto.UserDto;
 import com.fee.feeSecurity.entity.User;
@@ -28,12 +29,11 @@ public class AdminService {
     @Autowired
     private SessionFactory sf;
 
+    @Autowired
+    private UserDAO userDAO;
+
     public List<AdminDto> getAllUsers() {
         Page<User> users = adminDAO.findAll(PageRequest.of(0, 10, Direction.ASC, "id"));
-//        String s = "ROLE_ACCOUNTANT";
-//        Query us = sf.getCurrentSession().createQuery("FROM User u JOIN u.roles r  WHERE r.name = : s");
-//        us.setParameter("s", s);
-//        List<User> us1 = us.getResultList();
         return users.map(AdminDto::new).getContent();
     }
 

@@ -35,8 +35,8 @@
                         <td><p th:text="${student.dob}" /></td>
                         <td><p th:text="${student.email}" /></td>
                         <td><p th:text="${student.enabled}" /></td>
-                        <td th:each="role : ${student.roles}"><p th:text="${student.name}" /></td>
-                        <td><a th:href="@{/admin/{id}(id=${student.id})}" class="btn btn-primary">Edit</a></td>
+                        <td th:each="role : ${student.roles}"><p th:text="${role.name}" /></td>
+                        <td><a th:href="@{/accountant/student-edit/{id}(id=${student.id})}" class="btn btn-primary">Make Payment</a></td>
                         <td><a th:href="@{/users/delete/{id}(id=${student.id})}" class="btn btn-primary">Delete</a></td>
                     </tr>
                 </tbody>

@@ -24,26 +24,23 @@ public class AccService {
     @Autowired
     private RoleDAO roleDAO;
 
-    @Autowired
-    private UserDAO userDAO;
-
     public List<AccountantDto> getAllStudents() {
-        Page<User> users = userDAO
+        Page<User> users = accountantDAO
                 .findAllByRoles(PageRequest.of(0, 10, Sort.Direction.ASC, "id"),
                         roleDAO.findByName("ROLE_STUDENT"));
         return users.map(AccountantDto::new).getContent();
     }
 
-    public AccountantDto getStudentById(Long id) {
-
-        return accountantDAO.findById(id);
+    public StudentDto getStudentById(int id) {
+        User user = accountantDAO.findById(id);
+        return new StudentDto(user);
     }
 
     public void update(long id, StudentDto studentDto) {
     }
 
-    public void makePayment() {
+    public void makePayment(int id) {
 
-        accountantDAO.makePayment();
+        accountantDAO.payIt(id);
     }
 }

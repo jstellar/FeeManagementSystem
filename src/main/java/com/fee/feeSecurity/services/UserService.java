@@ -45,7 +45,7 @@ public class UserService {
         userDAO.deleteUser(userId);
     }
 
-    public void updateUser(long userId, UserDto userDto) {
+    public void updateUser(int userId, UserDto userDto) {
         User user = convertToUser(userDto);
         user.setId(userId);
         userDAO.save(user);

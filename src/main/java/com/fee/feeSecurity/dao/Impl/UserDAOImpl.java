@@ -70,13 +70,12 @@ public class UserDAOImpl implements UserDAO {
 ////        Page<User> findByLastname(String lastname, Pageable pageable);
 
 //        Query q = getSession().createQuery("select * from USER where user_type in (:userTypes) and user_context='abc'--#pageable\n");
-
-        Query us = getSession().createQuery("FROM User u JOIN u.roles r  WHERE r.name = : role");
-        us.setParameter("role", role);
-        List<User> us1 = us.getResultList();
-
-        return new PageImpl<>(us1, pageable, us1.size());
-
+        String st = "ROLE_STUDENT";
+//        Query us = getSession().createQuery("SELECT r FROM User u JOIN u.roles r  WHERE u.id = 6");
+        Query us = getSession().createQuery("select  u From User u JOIN u.roles r WHERE r.name = 'ROLE_STUDENT'");
+//        us.setParameter("role.name", role.getName());
+        List<User> users = us.getResultList();
+        return new PageImpl<User>(users, pageable, users.size());
 
     }
 

@@ -19,7 +19,7 @@ public class MvcCfg extends WebMvcConfigurerAdapter {
 
 
         registry.addViewController("/accountant").setViewName("accountant");//
-        registry.addViewController("/accountant/{id}").setViewName("acc-edit");//AccC
+        registry.addViewController("/accountant/student-edit/{id}").setViewName("acc-student-edit");//AccC
         registry.addViewController("/student").setViewName("student");
         registry.addViewController("/admin").setViewName("admin");
         registry.addViewController("/search").setViewName("users");

@@ -4,17 +4,16 @@ import com.fee.feeSecurity.entity.Role;
 import com.fee.feeSecurity.entity.User;
 import lombok.Data;
 
+import javax.persistence.Entity;
 import java.util.Collection;
 import java.util.List;
 
 @Data
 public class StudentDto extends UserDto{
 
-    private int fee;
-    private int feePaid;
-    private int due;
+
     private boolean enabled;
-    private Collection<Role> roles;
+    private List<Role> roles;
 
     public StudentDto(User user) {
         super(user);

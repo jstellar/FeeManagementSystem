@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Users</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h3>Make Payment</h3>
+    </div>
+    <div class="card-body">
+        <form th:action="@{/users/{id}(id=${id})}" method="put">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+
+            <div class="form-group" >
+                <input type="text" class="form-control" name="firstName" placeholder="First Name" th:value="${student.firstName}"/>
+            </div>
+
+            <div class="form-group" >
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name" th:value="${student.lastName}"/>
+            </div>
+
+            <div class="form-group" >
+                <input type="email" class="form-control" name="fee" placeholder="Fee" th:value="${student.fee}"/>
+            </div>
+
+            <div class="form-group" >
+                <input type="email" class="form-control" name="feePaid" placeholder="Fee Paid" th:value="${student.feePaid}"/>
+            </div>
+
+            <div class="form-group" >
+                <input type="email" class="form-control" readonly="readonly" name="due" placeholder="Due" th:value="${student.due}"/>
+            </div>
+
+            <div class="form-group" >
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

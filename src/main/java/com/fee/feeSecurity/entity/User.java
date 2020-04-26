@@ -17,7 +17,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private String firstName;
@@ -25,6 +25,9 @@ public class User implements UserDetails {
     private Date dob;
     private String email;
     private boolean enabled;
+    private int fee;
+    private int feePaid;
+    private int due;
 
     @ManyToMany
     @JoinTable( name = "users_roles",
@@ -32,7 +35,7 @@ public class User implements UserDetails {
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private List<Role> roles;
 
     public User() {}
 
@@ -49,7 +52,7 @@ public class User implements UserDetails {
         this.setRoles(roles);
     }
 
-    public User(Long id, String username, String password, String firstName, String lastName, Date dob, String email) {
+    public User(int id, String username, String password, String firstName, String lastName, Date dob, String email) {
         this.id = id;
         this.username = username;
         this.password = password;

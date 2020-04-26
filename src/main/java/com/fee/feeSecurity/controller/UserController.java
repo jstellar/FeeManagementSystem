@@ -17,13 +17,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @GetMapping("/users")
-//    public ModelAndView getAllUsers() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("users");
-//        modelAndView.addObject("users", userService.getAllUsers());
-//        return modelAndView;
-//    }
 
     @RequestMapping(method=RequestMethod.GET, value="/user")
     public ModelAndView getUserByUsername() {
@@ -44,13 +37,13 @@ public class UserController {
     }
 
     @PostMapping("/user/id")
-    public String updateUser(@PathVariable long id, @Valid UserDto userDto) {
+    public String updateUser(@PathVariable int id, @Valid UserDto userDto) {
         userService.updateUser(id, userDto);
         return "redirect:/user";
     }
 
     @DeleteMapping
-    public String deleteUser(@PathVariable long id) {
+    public String deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
         return "redirect:/logout";
     }

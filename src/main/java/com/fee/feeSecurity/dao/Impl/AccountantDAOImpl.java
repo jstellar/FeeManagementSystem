@@ -4,14 +4,14 @@ import com.fee.feeSecurity.dao.AccountantDAO;
 import com.fee.feeSecurity.dao.RoleDAO;
 import com.fee.feeSecurity.dao.UserDAO;
 import com.fee.feeSecurity.dto.AccountantDto;
+import com.fee.feeSecurity.dto.StudentDto;
+import com.fee.feeSecurity.entity.Role;
 import com.fee.feeSecurity.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,19 +35,20 @@ public class AccountantDAOImpl implements AccountantDAO {
         }
         return session;
     }
+
     @Override
-    public List<AccountantDto> findAllStudents() {
+    public Page<User> findAllByRoles(Pageable pageable, Role role) {
+        String role_name = role.getName();
+        Query q = getSession().createQuery("select  u From User u JOIN u.roles r WHERE r.name = :role_name");
+        q.setParameter("role_name", role_name);
+        List<User> users = q.getResultList();
+        return new PageImpl<>(users, pageable, users.size());
 
-        Page<User> users = userDAO
-                .findAllByRoles(PageRequest.of(0, 10, Sort.Direction.ASC, "id"),
-                        roleDAO.findByName("ROLE_STUDENT"));
-
-        return users.map(AccountantDto::new).getContent();
     }
 
     @Override
-    public AccountantDto findById(Long id) {
-        return getSession().get(AccountantDto.class, id);
+    public User findById(int id) {
+        return getSession().get(User.class, id);
     }
 
     @Override
@@ -68,7 +69,10 @@ public class AccountantDAOImpl implements AccountantDAO {
     }
 
     @Override
-    public void makePayment() {
+    public void payIt(int id) {
+
+        Query q = getSession().createQuery("Update User d Set d.due = d.fee - d.feePaid where d.id = : id");
+        q.setParameter("id", id);
 
     }
 }

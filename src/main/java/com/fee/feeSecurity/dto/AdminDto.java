@@ -13,7 +13,7 @@ import java.util.List;
 public class AdminDto extends UserDto{
 
     private boolean enabled;
-    private Collection<Role> roles;
+    private List<Role> roles;
 
     public AdminDto(User user) {
         super(user);

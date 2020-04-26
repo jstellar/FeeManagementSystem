@@ -1,6 +1,7 @@
 package com.fee.feeSecurity.controller;
 
 import com.fee.feeSecurity.dto.UserDto;
+import com.fee.feeSecurity.services.AccService;
 import com.fee.feeSecurity.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private AccService accService;
 
     @GetMapping("/admin")
     public ModelAndView getAllUsers() {

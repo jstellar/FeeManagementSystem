@@ -10,25 +10,24 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.List;
 
+@RestController
 public class AccountantController {
 
     @Autowired
     private AccService accService;
 
     @GetMapping("/accountant")
-    public ModelAndView getAllUsers() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("accountant");
-        modelAndView.addObject("students", accService.getAllStudents());
-        return  modelAndView;
+    public ModelAndView getAllStudents() {
+        return new ModelAndView().addObject("students", accService.getAllStudents());
     }
 
-    @GetMapping(value="/accountant/{id}")
-    public ModelAndView displayForm(@PathVariable long id) {
+    @GetMapping(value="/accountant/student-edit/{id}")
+    public ModelAndView displayForm(@PathVariable int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("acc-edit");
+        modelAndView.setViewName("acc-student-edit");
+        accService.makePayment(id);
         modelAndView.addObject("student", accService.getStudentById(id));
-        return  modelAndView;
+        return modelAndView;
     }
 
     @GetMapping(value = "/accountant/update/{id}")

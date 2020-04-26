@@ -32,7 +32,7 @@ public class AdminDAOImpl implements AdminDAO {
     public Page<User> findAll(Pageable pageable) {
 
         List<User> users = getSession().createQuery("From User", User.class).getResultList();
-        Page<User> usersPage = new PageImpl<User>(users,pageable, users.size());
+        Page<User> usersPage = new PageImpl<>(users,pageable, users.size());
 
         return usersPage;
     }

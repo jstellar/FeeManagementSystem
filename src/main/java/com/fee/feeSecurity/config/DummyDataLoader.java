@@ -78,6 +78,8 @@ public class DummyDataLoader{
         user4.setLastName("Yildiz");
         user4.setUsername("student");
         user4.setPassword(passwordEncoder.encode("pass"));
+        user4.setFee(1000);
+        user4.setFeePaid(500);
         user4.setRoles(Arrays.asList(roleDAO.findByName("ROLE_STUDENT")));
         user4.setEnabled(true);
         userDAO.save(user4);
@@ -87,6 +89,8 @@ public class DummyDataLoader{
         user5.setLastName("Yildiz");
         user5.setUsername("dyildiz");
         user5.setEmail("dyildiz@gmail.com");
+        user5.setFee(1000);
+        user5.setFeePaid(300);
         user5.setPassword(passwordEncoder.encode("pass"));
         user5.setRoles(Arrays.asList(roleDAO.findByName("ROLE_STUDENT")));
         user5.setEnabled(true);

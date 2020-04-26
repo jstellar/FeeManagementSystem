@@ -2,6 +2,7 @@ package com.fee.feeSecurity.dto;
 
 import com.fee.feeSecurity.entity.User;
 import lombok.Data;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ import java.util.Date;
 public class UserDto {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @NotNull
     @Size(min = 1)
@@ -38,6 +39,17 @@ public class UserDto {
     @Size(min = 1)
     private String email;
 
+    @NotNull
+    @Size(min = 1)
+    private int fee;
+
+    @NotNull
+    @Size(min = 1)
+    private int feePaid;
+
+    @Formula(value = "fee - feePaid")
+    private int due;
+
     public UserDto() { }
 
     public UserDto(User user) {
@@ -48,5 +60,8 @@ public class UserDto {
         this.lastName = user.getLastName();
         this.dob = user.getDob();
         this.email = user.getEmail();
+        this.fee = user.getFee();
+        this.feePaid = user.getFeePaid();
+        this.due = user.getDue();
     }
 }
