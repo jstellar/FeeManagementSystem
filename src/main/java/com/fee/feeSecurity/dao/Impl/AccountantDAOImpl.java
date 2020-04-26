@@ -72,7 +72,8 @@ public class AccountantDAOImpl implements AccountantDAO {
     public void payIt(int id) {
 
         Query q = getSession().createQuery("Update User d Set d.due = d.fee - d.feePaid where d.id = : id");
-        q.setParameter("id", id);
+        q.setParameter("id", id)
+        .executeUpdate();
 
     }
 }
