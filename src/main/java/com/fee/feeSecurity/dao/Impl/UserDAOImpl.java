@@ -54,26 +54,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-//    @Query( "select u from User u inner join u.roles r where r.role in :roles" )
-//    List<User> findBySpecificRoles(@Param("roles") List<Role> roles);
-//    @Query("SELECT u FROM User u WHERE u.id IN (SELECT ur.userId FROM UserRole ur WHERE ur.name = :role)")
     public Page<User> findAllByRoles(Pageable pageable, Role role) {
         System.out.println("Find all by roles");
-//        List users = getSession().createQuery("SELECT r  FROM User u JOIN u.roles r  WHERE u.id =:1").getResultList();
-//        List users = getSession().createQuery("FROM User u JOIN u.roles r  WHERE r.name = :role ORDER BY ?#{#pageable}").getResultList();
-//        List users = getSession().createQuery("SELECT u FROM User u WHERE u.id IN (SELECT ur.id FROM Role ur WHERE ur.name = :role").getResultList();
-//        return new PageImpl<User>(users,pageable, users.size());
-//
-//        Query q = getSession().createQuery("SELECT * FROM USERS WHERE LASTNAME = ?1 ORDER BY ?#{#pageable}",
-//                countQuery = "SELECT count(*) FROM USERS WHERE LASTNAME = ?1",
-//                nativeQuery = true);
-////        Page<User> findByLastname(String lastname, Pageable pageable);
-
-//        Query q = getSession().createQuery("select * from USER where user_type in (:userTypes) and user_context='abc'--#pageable\n");
-        String st = "ROLE_STUDENT";
-//        Query us = getSession().createQuery("SELECT r FROM User u JOIN u.roles r  WHERE u.id = 6");
         Query us = getSession().createQuery("select  u From User u JOIN u.roles r WHERE r.name = 'ROLE_STUDENT'");
-//        us.setParameter("role.name", role.getName());
         List<User> users = us.getResultList();
         return new PageImpl<User>(users, pageable, users.size());
 

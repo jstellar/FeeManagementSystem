@@ -46,7 +46,7 @@ public class DummyDataLoader{
         createRole("ROLE_ACCOUNTANT");
         createRole("ROLE_STUDENT");
 
-        final User user = new User();
+        User user = new User();
         user.setFirstName("Emre");
         user.setLastName("Yildiz");
         user.setUsername("admin");
@@ -55,7 +55,7 @@ public class DummyDataLoader{
         user.setEnabled(true);
         userDAO.save(user);
 
-        final User user2 = new User();
+        User user2 = new User();
         user2.setFirstName("Hasan");
         user2.setLastName("Yildiz");
         user2.setUsername("user");
@@ -64,7 +64,7 @@ public class DummyDataLoader{
         user2.setEnabled(true);
         userDAO.save(user2);
 
-        final User user3 = new User();
+        User user3 = new User();
         user3.setFirstName("Halim");
         user3.setLastName("Yildiz");
         user3.setUsername("accountant");
@@ -73,7 +73,7 @@ public class DummyDataLoader{
         user3.setEnabled(true);
         userDAO.save(user3);
 
-        final User user4 = new User();
+        User user4 = new User();
         user4.setFirstName("Mehmet");
         user4.setLastName("Yildiz");
         user4.setUsername("student");
@@ -84,7 +84,7 @@ public class DummyDataLoader{
         user4.setEnabled(true);
         userDAO.save(user4);
 
-        final User user5 = new User();
+        User user5 = new User();
         user5.setFirstName("Dursun");
         user5.setLastName("Yildiz");
         user5.setUsername("dyildiz");
@@ -95,5 +95,17 @@ public class DummyDataLoader{
         user5.setRoles(Arrays.asList(roleDAO.findByName("ROLE_STUDENT")));
         user5.setEnabled(true);
         userDAO.save(user5);
+
+        User user6 = new User();
+        user6.setFirstName("Tekin");
+        user6.setLastName("Yildiz");
+        user6.setUsername("dyildiz");
+        user6.setEmail("tyildiz@gmail.com");
+        user6.setFee(1000);
+        user6.setFeePaid(700);
+        user6.setPassword(passwordEncoder.encode("pass"));
+        user6.setRoles(Arrays.asList(roleDAO.findByName("ROLE_STUDENT")));
+        user6.setEnabled(true);
+        userDAO.save(user6);
     }
 }

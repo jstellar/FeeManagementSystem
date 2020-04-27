@@ -26,7 +26,7 @@ public class AccService {
 
     public List<AccountantDto> getAllStudents() {
         Page<User> users = accountantDAO
-                .findAllByRoles(PageRequest.of(0, 10, Sort.Direction.ASC, "id"),
+                .findAllByRoles(PageRequest.of(0, 2, Sort.Direction.ASC, "id"),
                         roleDAO.findByName("ROLE_STUDENT"));
         return users.map(AccountantDto::new).getContent();
     }
