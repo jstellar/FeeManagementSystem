@@ -11,27 +11,27 @@
         <h3>Make Payment</h3>
     </div>
     <div class="card-body">
-        <form th:action="@{/users/{id}(id=${id})}" method="put">
+        <form th:action="@{/accountant/pay/{id}(id = ${id})}" method="put">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
             <div class="form-group" >
-                <input type="text" class="form-control" name="firstName" placeholder="First Name" th:value="${student.firstName}"/>
+                <input type="text" class="form-control" readonly="readonly" name="firstName" placeholder="First Name" th:value="${student.user.firstName}"/>
             </div>
 
             <div class="form-group" >
-                <input type="text" class="form-control" name="lastName" placeholder="Last Name" th:value="${student.lastName}"/>
+                <input type="text" class="form-control" readonly="readonly" name="lastName" placeholder="Last Name" th:value="${student.user.lastName}"/>
             </div>
 
             <div class="form-group" >
-                <input type="email" class="form-control" name="fee" placeholder="Fee" th:value="${student.fee}"/>
+                <input type="text" class="form-control"  name="fee" placeholder="Fee" th:value="${student.fee}"/>
             </div>
 
             <div class="form-group" >
-                <input type="email" class="form-control" name="feePaid" placeholder="Fee Paid" th:value="${student.feePaid}"/>
+                <input type="text" class="form-control" name="feePaid" placeholder="Fee Paid" th:value="${student.feePaid}"/>
             </div>
 
             <div class="form-group" >
-                <input type="email" class="form-control" readonly="readonly" name="due" placeholder="Due" th:value="${student.due}"/>
+                <input type="text" class="form-control" readonly="readonly" name="due" placeholder="Due" th:value="${student.due}"/>
             </div>
 
             <div class="form-group" >

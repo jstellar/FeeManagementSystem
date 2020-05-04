@@ -15,5 +15,5 @@ public interface UserDAO {
     User findByUsername(String username);
     Page<User> findAllByRoles(Pageable pageable, Role role);
     void deleteUser(long userId);
-    User findUserById(long id);
+    User findUserById(int id);
 }

@@ -68,7 +68,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User findUserById(long id) {
+    public User findUserById(int id) {
         return getSession().get(User.class, id);
     }
 

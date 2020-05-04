@@ -2,12 +2,17 @@ package com.fee.feeSecurity.controller;
 
 import com.fee.feeSecurity.dto.AccountantDto;
 import com.fee.feeSecurity.dto.StudentDto;
+import com.fee.feeSecurity.entity.Student;
 import com.fee.feeSecurity.services.AccService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -25,9 +30,19 @@ public class AccountantController {
     public ModelAndView displayForm(@PathVariable int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("acc-student-edit");
-        accService.makePayment(id);
+//        accService.makePayment(id);
         modelAndView.addObject("student", accService.getStudentById(id));
         return modelAndView;
+    }
+
+//    @PutMapping(value = "/accountant/pay/{id}")
+    @RequestMapping(method=RequestMethod.GET, value="/accountant/pay/{id}")
+    public void makePayment(@PathVariable int id, @Valid StudentDto student) throws IOException {
+//        if (bindingResult.hasErrors()) {
+//            res.sendRedirect("/register");
+//        }else {
+            accService.makePayment(id, student);
+//        }
     }
 
     @GetMapping(value = "/accountant/update/{id}")

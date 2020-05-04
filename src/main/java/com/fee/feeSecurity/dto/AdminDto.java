@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 public class AdminDto extends UserDto{
 
     private boolean enabled;
@@ -20,4 +20,6 @@ public class AdminDto extends UserDto{
         this.enabled = user.isEnabled();
         this.roles = user.getRoles();
     }
+
+
 }
